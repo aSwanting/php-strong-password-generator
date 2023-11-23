@@ -3,7 +3,7 @@
 $password_length = $_GET["password_length"] ?? null;
 function generateSecurePassword($password_length)
 {
-    $password_chars = "abcdefghijklmnopqrstuvwxyz";
+    $password_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-=_+[]{}|;:\'",.<>?/';
     $password = "";
 
     for ($i = 0; $i < $password_length; $i++) {
@@ -47,8 +47,8 @@ function generateSecurePassword($password_length)
 
             <?php if ($password_length) { ?>
 
-                <p>Password Length = <?= $password_length; ?></p>
-                <p>Result = <?= generateSecurePassword($password_length); ?></p>
+                <p><span class="fw-medium"> Password Length:</span> <?= $password_length; ?></p>
+                <p><span class="fw-medium">Result:</span> <?= generateSecurePassword($password_length); ?></p>
 
             <?php } ?>
 
