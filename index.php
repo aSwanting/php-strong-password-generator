@@ -1,9 +1,22 @@
 <!-- ////////////////////////////////////////// PHP ////////////////////////////////////////// -->
+
 <?php
+
 session_start();
 include __DIR__ . "/partials/functions/functions.php";
+$password_length = $_GET["password_length"] ?? null;
+
+if ($password_length) {
+    $_SESSION["password"] = generateSecurePassword($password_length);
+    header("location: ./partials/server/password.php");
+    die();
+    // $_SESSION["password"] = "pippo";
+}
+
 ?>
+
 <!-- ////////////////////////////////////////// HTML ////////////////////////////////////////// -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,11 +46,6 @@ include __DIR__ . "/partials/functions/functions.php";
 
             </form>
             <!-- Form End -->
-
-            <?php if ($password_length) {
-                $_SESSION["password"] = generateSecurePassword($password_length);
-                header("location: ./partials/server/password.php");
-            } ?>
 
         </div>
     </div>
