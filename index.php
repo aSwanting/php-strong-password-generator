@@ -3,8 +3,15 @@
 $password_length = $_GET["password_length"] ?? 8;
 function generateSecurePassword()
 {
-    $n = rand(0, 32);
-    return $n;
+    $password_chars = "abcdefghijklmnopqrstuvwxyz";
+    $password = "";
+
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, (strlen($password_chars) - 1));
+        $password .=  $password_chars[$n];
+    }
+
+    return $password;
 }
 ?>
 <!-- ////////////////////////////////////////// HTML ////////////////////////////////////////// -->
@@ -19,12 +26,12 @@ function generateSecurePassword()
 </head>
 
 <body>
-    <div class="container border border rounded p-5 my-5 shadow">
-        <h1 class="display-5 text-center">Password Generator</h1>
-        <div class="container border border rounded p-5 my-5 shadow">
+    <div class="container p-5 my-5">
+        <h1 class="display-6">Password Generator</h1>
+        <div class="container border rounded p-5 shadow">
 
             <!-- Form Start -->
-            <form class="row g-3 align-items-end" method="get">
+            <form class="row g-3 mb-3 align-items-end" method="get">
 
                 <div class="col-auto">
                     <label class="form-label" for="password_length">Choose password length between 8 and 32 characters</label>
@@ -35,13 +42,11 @@ function generateSecurePassword()
                     <input class="btn btn-outline-secondary" type="submit" value="Generate">
                 </div>
 
-
-                <p>Password Length = <?= $password_length; ?></p>
-                <p><?= generateSecurePassword(); ?></p>
-
-
             </form>
             <!-- Form End -->
+
+            <p>Password Length = <?= $password_length; ?></p>
+            <p>Result = <?= generateSecurePassword(); ?></p>
 
         </div>
     </div>
