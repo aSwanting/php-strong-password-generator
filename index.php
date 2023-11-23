@@ -1,6 +1,11 @@
 <!-- ////////////////////////////////////////// PHP ////////////////////////////////////////// -->
 <?php
 $password_length = $_GET["password_length"] ?? 8;
+function generateSecurePassword()
+{
+    $n = rand(0, 32);
+    return $n;
+}
 ?>
 <!-- ////////////////////////////////////////// HTML ////////////////////////////////////////// -->
 <!DOCTYPE html>
@@ -32,6 +37,7 @@ $password_length = $_GET["password_length"] ?? 8;
 
 
                 <p>Password Length = <?= $password_length; ?></p>
+                <p><?= generateSecurePassword(); ?></p>
 
 
             </form>
