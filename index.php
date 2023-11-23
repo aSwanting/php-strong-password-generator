@@ -1,5 +1,6 @@
 <!-- ////////////////////////////////////////// PHP ////////////////////////////////////////// -->
 <?php
+session_start();
 include __DIR__ . "/partials/functions/functions.php";
 ?>
 <!-- ////////////////////////////////////////// HTML ////////////////////////////////////////// -->
@@ -33,11 +34,10 @@ include __DIR__ . "/partials/functions/functions.php";
             </form>
             <!-- Form End -->
 
-            <?php if ($password_length) { ?>
-
-                <p><span class="fw-medium">Result:</span> <?= generateSecurePassword($password_length); ?></p>
-
-            <?php } ?>
+            <?php if ($password_length) {
+                $_SESSION["password"] = generateSecurePassword($password_length);
+                header("location: ./partials/server/password.php");
+            } ?>
 
         </div>
     </div>
