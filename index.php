@@ -20,10 +20,10 @@ include __DIR__ . "/partials/functions/functions.php";
         <div class="container bg-white border rounded rounded-5 p-5 shadow">
 
             <!-- Form Start -->
-            <form class="row g-3 justify-content-center align-items-end" method="get">
+            <form class="row g-4 justify-content-center align-items-end" method="get">
 
                 <div class="col-auto">
-                    <label class="form-label" for="password-length">Choose password length between 8 and 32 characters</label>
+                    <label class="form-label mb-3" for="password-length">Choose password length between 8 and 32 characters</label>
                     <input class="form-control" type="number" name="password_length" id="password-length" placeholder="Length between 8 and 32" value="<?= $password_length; ?>" min="8" max="32" required>
                 </div>
 
